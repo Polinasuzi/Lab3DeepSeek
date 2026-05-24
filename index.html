@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Личное резюме Суздалевой Полины — опыт работы, образование, навыки и контакты">
+    <title>Суздалева Полина · Резюме</title>
+    <style>
+        /* ----- RESET & БАЗОВЫЕ СТИЛИ (чистый минимализм) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f9fafc;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Кастомные шрифты — без внешних библиотек, используем системные */
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ----- СЕКЦИИ И КАРТОЧКИ ----- */
+        section {
+            padding: 64px 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .bg-white-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.03);
+            padding: 28px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bg-white-card:hover {
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+        }
+
+        /* Грид и флекс — адаптивность */
+        .grid-2cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        /* ГЕРО (краткая информация) */
+        .hero {
+            text-align: center;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafd 100%);
+            border-radius: 0 0 32px 32px;
+            padding: 48px 24px 56px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e293b, #2d4a8c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .hero .title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        .hero .bio {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #475569;
+            font-size: 1.05rem;
+        }
+        .btn-group {
+            margin-top: 28px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            box-shadow: 0 4px 8px rgba(59,130,246,0.2);
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(59,130,246,0.25);
+        }
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #cbd5e1;
+            color: #1f2937;
+        }
+        .btn-outline:hover {
+            border-color: #3b82f6;
+            background-color: #f0f9ff;
+            transform: translateY(-2px);
+        }
+
+        /* опыт работы, образование — списки */
+        .job-item, .edu-item {
+            margin-bottom: 24px;
+            border-left: 3px solid #e2e8f0;
+            padding-left: 20px;
+            transition: border 0.2s;
+        }
+        .job-item:hover, .edu-item:hover {
+            border-left-color: #3b82f6;
+        }
+        .job-header, .edu-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+        .job-title, .edu-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .company, .institution {
+            font-weight: 500;
+            color: #3b82f6;
+        }
+        .date {
+            color: #6c757d;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+        .desc {
+            margin-top: 10px;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .skill-tag {
+            background: #eef2ff;
+            color: #1e3a8a;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .skill-tag:hover {
+            background: #d9e6ff;
+            transform: scale(1.02);
+        }
+
+        /* форма обратной связи */
+        .contact-form {
+            background: white;
+            border-radius: 28px;
+            padding: 32px;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cfdfed;
+            border-radius: 18px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: #fefefe;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.75rem;
+            margin-top: 5px;
+            display: block;
+        }
+        .btn-submit {
+            background-color: #1e293b;
+            color: white;
+            width: 100%;
+            justify-content: center;
+            font-weight: 600;
+            border: none;
+            padding: 14px;
+        }
+        .btn-submit:hover {
+            background-color: #0f172a;
+            transform: translateY(-1px);
+        }
+        .form-status {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 8px;
+            border-radius: 30px;
+        }
+
+        /* анимации появления при скролле */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s ease;
+        }
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            section {
+                padding: 48px 0;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero .title {
+                font-size: 1.2rem;
+            }
+            .btn-group {
+                gap: 12px;
+            }
+            .btn {
+                padding: 10px 20px;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .job-header, .edu-header {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .bg-white-card {
+                padding: 20px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 0 40px;
+            color: #6c86a3;
+            font-size: 0.85rem;
+            border-top: 1px solid #eef2f6;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <!-- Секция: Краткая информация о пользователе (имя, должность, описание) -->
+    <div class="hero">
+        <div class="container">
+            <h1>Суздалева Полина</h1>
+            <div class="title">Frontend-разработчик & UX-энтузиаст</div>
+            <div class="bio">
+                Создаю адаптивные, быстрые и эстетичные веб-интерфейсы. 
+                Люблю минимализм, чистый код и человеко-центрированный дизайн. 
+                3+ года опыта в разработке современных веб-приложений.
+            </div>
+            <div class="btn-group">
+                <!-- Кнопка "Скачать резюме" (псевдо-ссылка-заглушка PDF) -->
+                <button class="btn btn-primary" id="downloadResumeBtn">📄 Скачать резюме (PDF)</button>
+                <!-- Кнопка "Связаться со мной" - плавный скролл к форме -->
+                <button class="btn btn-outline" id="contactScrollBtn">✉️ Связаться со мной</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- ОПЫТ РАБОТЫ -->
+        <section id="experience" class="fade-up">
+            <h2>Опыт работы</h2>
+            <div class="grid-2cols">
+                <div class="bg-white-card">
+                    <div class="job-item" style="border-left: none; padding-left: 0;">
+                        <div class="job-header">
+                            <span class="job-title">Frontend-разработчик</span>
+                            <span class="date">2023 — наст. время</span>
+                        </div>
+                        <div class="company">Яндекс.Практикум · IT-команда</div>
+                        <div class="desc">
+                            Разработка и поддержка SPA на React, интеграция с REST API, оптимизация производительности.
+                            Внедрение компонентной архитектуры и Storybook. Участие в код-ревью и менторинг стажёров.
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white-card">
+                    <div class="job-item" style="border-left: none; padding-left: 0;">
+                        <div class="job-header">
+                            <span class="job-title">Веб-дизайнер / HTML-верстальщик</span>
+                            <span class="date">2021 — 2023</span>
+                        </div>
+                        <div class="company">RedCollab · Креативное агентство</div>
+                        <div class="desc">
+                            Создание адаптивных лендингов и многостраничных сайтов. Вёрстка по макетам Figma, 
+                            использование CSS Grid и Flexbox. Настройка анимаций и взаимодействий с JS.
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white-card">
+                    <div class="job-item" style="border-left: none; padding-left: 0;">
+                        <div class="job-header">
+                            <span class="job-title">Freelance разработчик</span>
+                            <span class="date">2020 — 2021</span>
+                        </div>
+                        <div class="company">Самозанятость</div>
+                        <div class="desc">
+                            Разработка корпоративных сайтов и интернет-магазинов на чистом HTML/CSS/JS, 
+                            интеграция с CRM, настройка SEO-метатегов. Полный цикл от брифа до релиза.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ОБРАЗОВАНИЕ -->
+        <section id="education" class="fade-up">
+            <h2>Образование</h2>
+            <div class="grid-2cols">
+                <div class="bg-white-card">
+                    <div class="edu-item" style="border-left: none; padding-left: 0;">
+                        <div class="edu-header">
+                            <span class="edu-title">НИУ ВШЭ, Москва</span>
+                            <span class="date">2018 — 2022</span>
+                        </div>
+                        <div class="institution">Прикладная информатика (бакалавриат)</div>
+                        <div class="desc">Диплом с отличием. Углублённое изучение веб-технологий, алгоритмов и проектирования интерфейсов.</div>
+                    </div>
+                </div>
+                <div class="bg-white-card">
+                    <div class="edu-item" style="border-left: none; padding-left: 0;">
+                        <div class="edu-header">
+                            <span class="edu-title">Профессиональные курсы</span>
+                            <span class="date">2023</span>
+                        </div>
+                        <div class="institution">Яндекс.Практикум — «React-разработчик»</div>
+                        <div class="desc">Redux Toolkit, React Router, хуки, оптимизация, TypeScript.</div>
+                    </div>
+                    <div class="edu-item" style="border-left: none; padding-left: 0; margin-top: 20px;">
+                        <div class="edu-header">
+                            <span class="edu-title">Soft Skills Academy</span>
+                            <span class="date">2022</span>
+                        </div>
+                        <div class="institution">Коммуникация и управление командой</div>
+                        <div class="desc">Эффективное взаимодействие, фасилитация встреч, решение конфликтов.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- НАВЫКИ (технические + мягкие) -->
+        <section id="skills" class="fade-up">
+            <h2>Навыки</h2>
+            <div class="bg-white-card" style="padding: 28px;">
+                <div style="margin-bottom: 8px; font-weight: 600;">💻 Технические</div>
+                <div class="skills-wrapper">
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">React / Redux</span>
+                    <span class="skill-tag">HTML5 / CSS3</span>
+                    <span class="skill-tag">Flexbox / Grid</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">REST API</span>
+                    <span class="skill-tag">Webpack / Vite</span>
+                    <span class="skill-tag">Figma / Pixel Perfect</span>
+                </div>
+                <div style="margin: 24px 0 8px; font-weight: 600;">🤝 Мягкие навыки</div>
+                <div class="skills-wrapper">
+                    <span class="skill-tag">Командная работа</span>
+                    <span class="skill-tag">Критическое мышление</span>
+                    <span class="skill-tag">Тайм-менеджмент</span>
+                    <span class="skill-tag">Эмпатия и коммуникация</span>
+                    <span class="skill-tag">Адаптивность</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ФОРМА ОБРАТНОЙ СВЯЗИ (с валидацией) -->
+        <section id="contact" class="fade-up">
+            <h2>Напишите мне</h2>
+            <div class="contact-form" id="feedbackFormContainer">
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Имя *</label>
+                        <input type="text" id="name" name="name" placeholder="Полина или ваше имя" autocomplete="name">
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="example@domain.com" autocomplete="email">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение *</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Расскажите о сотрудничестве или задайте вопрос..."></textarea>
+                        <div class="error-message" id="messageError"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">📩 Отправить сообщение</button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div>© 2025 Суздалева Полина — создано с вниманием к деталям ✨</div>
+    </footer>
+</main>
+
+<script>
+    /* ----- АНИМАЦИЯ ПРИ ПРОКРУТКЕ (Intersection Observer) ----- */
+    const animatedElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target); // после появления больше не следим
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Немедленно проверим видимые при загрузке (если часть уже видна)
+    setTimeout(() => {
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                el.classList.add('appear');
+                observer.unobserve(el);
+            }
+        });
+    }, 100);
+
+    /* ----- КНОПКА "Скачать резюме" (заглушка PDF) ----- */
+    const downloadBtn = document.getElementById('downloadResumeBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Создаем заглушку - текстовый "PDF" с имитацией генерации.
+            // В реальном сценарии можно ссылаться на файл, но по ТЗ — псевдо-ссылка или заглушка.
+            alert('📄 Функциональность скачивания резюме (PDF) — демо-режим. Полная версия будет доступна по запросу.');
+            // Дополнительно: можно создать блоб и предложить скачать .txt с макетом информации.
+            const resumeContent = `РЕЗЮМЕ — Суздалева Полина\nКонтакт: suzdaleva@example.com\nОпыт: Frontend-разработчик в Яндексе, более 3 лет...\nОбразование: НИУ ВШЭ, курсы React.`;
+            const blob = new Blob([resumeContent], {type: 'application/pdf'});
+            // Имитируем ссылку, но из-за типа application/pdf браузер может открыть как пустой, лучше предложим скачать текстовый файл.
+            // Но для корректного пользовательского опыта сделаем .txt . но чтобы сохранить идею псевдо-ссылки PDF — показываем уведомление + опционально сохраняем .pdf заглушку.
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Suzdaleva_Polina_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+        });
+    }
+
+    /* ----- КНОПКА плавного скролла к контактной форме ----- */
+    const scrollBtn = document.getElementById('contactScrollBtn');
+    const contactSection = document.getElementById('contact');
+    if (scrollBtn && contactSection) {
+        scrollBtn.addEventListener('click', () => {
+            contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Дополнительный акцент на форму (подсветка)
+            const formWrap = document.querySelector('.contact-form');
+            if (formWrap) {
+                formWrap.style.transition = 'box-shadow 0.2s';
+                formWrap.style.boxShadow = '0 0 0 3px rgba(59,130,246,0.4)';
+                setTimeout(() => {
+                    formWrap.style.boxShadow = '';
+                }, 1200);
+            }
+        });
+    }
+
+    /* ----- ФОРМА: базовая валидация через JavaScript ----- */
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const messageError = document.getElementById('messageError');
+    const formStatus = document.getElementById('formStatus');
+
+    // Вспомогательные функции валидации
+    function validateName() {
+        const name = nameInput.value.trim();
+        if (name === '') {
+            nameError.textContent = 'Пожалуйста, укажите ваше имя.';
+            return false;
+        } else if (name.length < 2) {
+            nameError.textContent = 'Имя должно содержать минимум 2 символа.';
+            return false;
+        }
+        nameError.textContent = '';
+        return true;
+    }
+
+    function validateEmail() {
+        const email = emailInput.value.trim();
+        const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+        if (email === '') {
+            emailError.textContent = 'Email обязателен для обратной связи.';
+            return false;
+        } else if (!emailPattern.test(email)) {
+            emailError.textContent = 'Введите корректный email (например, name@domain.com).';
+            return false;
+        }
+        emailError.textContent = '';
+        return true;
+    }
+
+    function validateMessage() {
+        const msg = messageInput.value.trim();
+        if (msg === '') {
+            messageError.textContent = 'Пожалуйста, напишите сообщение.';
+            return false;
+        } else if (msg.length < 5) {
+            messageError.textContent = 'Сообщение должно содержать минимум 5 символов.';
+            return false;
+        }
+        messageError.textContent = '';
+        return true;
+    }
+
+    // Реальная валидация всех полей
+    function validateForm() {
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+        const isMsgValid = validateMessage();
+        return isNameValid && isEmailValid && isMsgValid;
+    }
+
+    // Сброс ошибок и статуса
+    function clearFormStatus() {
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+    }
+
+    // Обработчик отправки формы
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        clearFormStatus();
+        if (validateForm()) {
+            // В реальном проекте здесь был бы fetch на сервер, но по ТЗ - демонстрация с успешным сообщением.
+            formStatus.textContent = '✅ Спасибо! Ваше сообщение отправлено. Я свяжусь с вами в ближайшее время.';
+            formStatus.style.backgroundColor = '#e6f7e6';
+            formStatus.style.color = '#2e6b2f';
+            // Сбросить поля формы (опционально)
+            form.reset();
+            // очищаем возможные ошибки визуально, т.к. поля пустые
+            nameError.textContent = '';
+            emailError.textContent = '';
+            messageError.textContent = '';
+            // Автоматически скрыть сообщение через 5 сек
+            setTimeout(() => {
+                if (formStatus) {
+                    formStatus.style.opacity = '0';
+                    setTimeout(() => {
+                        formStatus.textContent = '';
+                        formStatus.style.backgroundColor = '';
+                        formStatus.style.opacity = '1';
+                    }, 400);
+                }
+            }, 5000);
+        } else {
+            formStatus.textContent = '❌ Пожалуйста, исправьте ошибки в форме.';
+            formStatus.style.backgroundColor = '#ffe6e6';
+            formStatus.style.color = '#b91c1c';
+        }
+    });
+
+    // Интерактивная валидация при потере фокуса (улучшение UX)
+    nameInput.addEventListener('blur', validateName);
+    emailInput.addEventListener('blur', validateEmail);
+    messageInput.addEventListener('blur', validateMessage);
+    // дополнительно "живая" валидация при вводе (чтобы сразу убирать ошибку)
+    nameInput.addEventListener('input', () => { if (nameError.textContent) validateName(); });
+    emailInput.addEventListener('input', () => { if (emailError.textContent) validateEmail(); });
+    messageInput.addEventListener('input', () => { if (messageError.textContent) validateMessage(); });
+</script>
+</body>
+</html>
